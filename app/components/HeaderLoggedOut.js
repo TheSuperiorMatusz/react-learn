@@ -8,7 +8,7 @@ function HeaderLoggedOut(props) {
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-      const response = await axios.post("http://localhost:8080/login", { username, password })
+      const response = await axios.post("/login", { username, password })
       if (response.data) {
         localStorage.setItem("complexappToken", response.data.token)
         localStorage.setItem("complexappUsername", response.data.username)
