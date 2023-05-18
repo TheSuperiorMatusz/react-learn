@@ -1,12 +1,17 @@
-import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
+import React, { useEffect, useContext } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import DispatchContext from "../DispatchContext"
 
 function HeaderLoggedIn(props) {
+  const appDispatch = useContext(DispatchContext)
+  const navigate = useNavigate()
+
   function handleLogout() {
-    props.setLoggedIn(false)
+    appDispatch({ type: "logout" })
     localStorage.removeItem("complexappToken")
     localStorage.removeItem("complexappUsername")
     localStorage.removeItem("complexappAvatar")
+    navigate("/")
   }
 
   return (
